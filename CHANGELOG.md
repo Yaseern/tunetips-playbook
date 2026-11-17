@@ -18,7 +18,11 @@ All notable changes to this project are recorded here. Versions follow
   changed or reverted by new tasks.
 - Learning as you go: lessons go into Project notes in `AGENTS.md`, `PLAN.md` or the README in
   the same pull request.
+- Guide for beginners in `docs/`, one page per stage: judging an idea, the plan format, the build
+  loop, and a release checklist.
 
 ### Changed
 
 - `AGENTS.md` keeps only the rules; the step-by-step for each stage moved into the skills.
+- The README is the entry point, renamed to Tunetips Kit: what to install, making your own copy,
+  and the path to the first task, with links into the guide.
