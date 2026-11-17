@@ -29,6 +29,16 @@ You work through four stages, and the agent walks you through each one:
 
 Check that each works: `git --version`, `gh auth status`, `claude --version`.
 
+On a new Git install, tell Git who you are once, or your first commit fails:
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+CI runs the repository's own checks on GitHub, so you don't need their tools (`jq`, Python)
+on your computer.
+
 ### 2. Make your own copy
 
 One copy of the kit holds one product.
@@ -49,13 +59,42 @@ One copy of the kit holds one product.
 Run `claude` in the repository folder. The agent reads `CLAUDE.md` and `AGENTS.md` on its own,
 so you don't need to explain the rules.
 
-`.claude/settings.json` sets the guardrails: Claude Code reads files freely, asks you before it
-pushes, merges or publishes, and is blocked from force pushes, deleting remote branches, hard
-resets and `rm -r`. Its file reader also can't open the common `.env` files that hold secrets
-(`.env.example` stays readable). Say yes to a push when the agent is pushing its own task branch. The rules
-match common command forms only, so still read what the agent asks to run.
+`.claude/settings.json` sets the guardrails: Claude Code reads files freely and may switch
+branches, stage, commit, pull and merge `main` into a branch on its own. These local steps can
+be undone; `AGENTS.md` keeps its commits off `main`, and `.gitignore` keeps `.env` files out of
+a normal `git add`. It asks you before it pushes, opens a pull request, merges
+or publishes, and is blocked from force pushes, deleting remote branches, hard resets and
+`rm -r` (`git rm -r`, which git can undo, is allowed after a yes). Its file reader also can't
+open the common `.env` files that hold secrets (`.env.example` stays readable). Other commands,
+such as running tests or installing packages, ask too: read each one and say yes when it fits
+the task. Say yes to a push or a pull request when the agent is working on its own task branch.
+The rules match common command forms only, so still read what the agent asks to run.
 
-### 4. Your first task
+### 4. Make it yours
+
+Your copy still holds the kit's example product, the kit's changelog and the kit's name in the
+license. Clear them out in one pull request before your first idea, so the copy holds only your
+product. You can ask your agent: "Do README step 4, Make it yours". Asking approves the deletions,
+and it still asks before pushing. By hand:
+
+1. Create the branch: `git switch -c make-it-yours`.
+2. Delete the example: `git rm -r examples`.
+3. In `.github/workflows/ci.yml`, delete the comment that starts `# Example product` and the two
+   steps under it (`actions/setup-node` and `Example product tests`).
+4. In this README, delete this step (`### 4. Make it yours`), renumber `### 5. Your first task`
+   to 4, and delete the section `## The example product` and the `examples/` row in
+   **What's inside**.
+5. In `CHANGELOG.md`, keep the title, the intro and `## [Unreleased]`, and delete everything
+   below it. From now on it records your product's versions.
+6. In `LICENSE`, replace `Tunetips` with your name, or choose another license.
+7. Commit with the message `Make the kit copy my own`, push (`git push -u origin make-it-yours`)
+   and open a pull request:
+   `gh pr create --fill`. No task goes with it. CI should pass; then merge it.
+8. Back on your computer, return to the updated `main`: `git switch main`, then `git pull`.
+
+Nothing else in the repository refers to `examples/`.
+
+### 5. Your first task
 
 1. **Idea.** Run `/new-idea` and describe what you want to build. Answer its questions; it scores
    the idea and gives a go, park or drop. See [1. Idea](docs/01-idea.md).
@@ -75,22 +114,8 @@ With another agent, ask it to follow `.claude/skills/new-idea/SKILL.md` (then `p
 
 [`examples/habit-streaks/`](examples/habit-streaks/) is a tiny finished product built with the
 kit: a command-line habit tracker in Node.js with tests. Its `PLAN.md` and `TASKS.md` show what
-your own will look like by the end, and CI runs its tests.
-
-### Removing the example
-
-Remove it before your first `/new-idea`, so your copy holds only your product. On a branch, as for
-any change:
-
-1. Delete the folder: `git rm -r examples`.
-2. In `.github/workflows/ci.yml`, delete the two steps under the comment `# Example product`
-   (`actions/setup-node` and `Example product tests`), and the comment itself.
-3. In this README, delete the section `## The example product` (with this one inside it) and the
-   `examples/` row in **What's inside**.
-4. Commit, push and open a pull request. CI should pass; merge it.
-
-`CHANGELOG.md` is the kit's history, so leave its line about the example as it is. Nothing else in
-the repository refers to `examples/`.
+your own will look like by the end, and CI runs its tests. Remove it in
+[step 4, Make it yours](#4-make-it-yours).
 
 ## What's inside
 
@@ -103,8 +128,8 @@ the repository refers to `examples/`.
 | [`.claude/agents/reviewer.md`](.claude/agents/reviewer.md) | A fresh-eyes reviewer the agent runs before each pull request. |
 | [`.claude/settings.json`](.claude/settings.json) | Guardrails: what Claude Code may do freely, must ask about, or may never do. |
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI: checks every pull request. Add your product's tests to it. |
-| [`examples/`](examples/) | The example product. Remove it before you start yours (see above). |
-| [`CHANGELOG.md`](CHANGELOG.md) | What changed in each version of the kit. |
+| [`examples/`](examples/) | The example product. Remove it before you start yours (step 4). |
+| [`CHANGELOG.md`](CHANGELOG.md) | What changed in each version. |
 
 Your product adds two files as you go: `PLAN.md` (stage, idea, stack, brief) and `TASKS.md` (the
 tasks). Once your product has its own README content, replace this one with it, keeping a link
