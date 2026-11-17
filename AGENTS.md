@@ -44,64 +44,68 @@ Every product moves through **idea → plan → build → done**, and the develo
 stage with you. At the start of a stage, tell them what it is for, what you will do, what they
 need to decide, and what comes next. At the end, say what was produced.
 
+The steps for each stage are in `.claude/skills/<name>/SKILL.md`. Claude Code runs them as
+`/new-idea`, `/plan-it` and `/work-on-it`; other agents read and follow those files.
+
+1. **Idea** (`/new-idea`): ask what is unclear, score the idea, and give a go, park or drop verdict.
+   The developer decides.
+2. **Plan** (`/plan-it`): agree on the technology with the developer, then write the brief in
+   `PLAN.md` and the tasks in `TASKS.md`. **The developer approves the plan by merging its pull
+   request, and nothing is built before that.**
+3. **Build** (`/work-on-it`): one task per session, through the workflow below.
+4. **Done** (`/work-on-it`, once every task is done): the product meets the definition of done
+   below and has a release.
+
 The first line of `PLAN.md` is the stage: `Stage: idea`, `plan`, `build` or `done`. No `PLAN.md`
-means the idea stage.
+means the idea stage. Each skill says when it changes the line.
 
-1. **Idea**: is it worth building? Ask what is unclear about the idea: the problem, who has it, how
-   they deal with it today, and what the first version must do. Ask a few questions at a time and
-   don't guess the answers. Then score it from 1 to 3 with one line of reasoning each:
-   - **Need**: 3 = people need it every day, 2 = every week, 1 = now and then.
-   - **Users**: 3 = many people clearly have this problem today, 2 = a clear but small group,
-     1 = unclear who would use it.
-   - **Effort** to a solid first release: 3 = days, 2 = weeks, 1 = months.
-   - **Risk**: 3 = little can go wrong, 2 = manageable (user data, uptime, store rules),
-     1 = legal, money or reputation at stake.
+Each task in `TASKS.md` looks like this:
 
-   10 or more: **go**. 7 to 9: **park** (revisit later). Below 7: **drop**. The verdict is advice;
-   the developer decides. Create `PLAN.md` with `Stage: idea`, the scores and the verdict.
-2. **Plan**: first settle the technology. Ask what the developer already knows and where the
-   product must run (web, phone, desktop, command line). Recommend one stack that fits the idea:
-   well known, free to start, simple to host, suited to their experience. Give one line of
-   reasoning per choice and name one alternative. The developer chooses. Then, in `PLAN.md`, set
-   `Stage: plan` and write the stack, the problem, who it is for, what is out of scope, and how we
-   will know it worked. In `TASKS.md`, write 3 to 10 tasks in order, each a day or less, the first
-   one usable on its own:
+```
+- [ ] Task title
+  Done when: how to check it
+  Waits on: nothing (or the tasks it needs)
+```
 
-   ```
-   - [ ] Task title
-     Done when: how to check it
-     Waits on: nothing (or the tasks it needs)
-   ```
+## When things change
 
-   Idea and plan go on a branch named `plan`. Its pull request is the plan: **the developer
-   approves it by merging, and nothing is built before that.**
-3. **Build**: take the first open task whose `Waits on:` tasks are all done and carry it through
-   the workflow below. The first build task's branch sets `Stage: build`.
-4. **Done**: the product meets the definition of done below and has a release. The release branch
-   sets `Stage: done`.
+The stages usually run in order, but what you learn while planning or building can change the
+plan or even the idea. That is normal: change it on purpose, through a pull request, instead of
+drifting from it.
+
+- **A task changes** (added, dropped, split or reworded): edit `TASKS.md` on the current branch.
+- **The plan changes** (scope, stack, brief, several tasks): run `/plan-it` again. Done tasks stay
+  done; open tasks are rewritten.
+- **The idea changes** (the problem or the users): run `/new-idea` again to re-score it, then
+  `/plan-it`.
+- **Built work no longer fits** (rare): the new plan adds tasks to change or remove it, or to
+  revert a merged pull request with `git revert`. Never rewrite history.
+
+Record each plan or idea change as one line under `## Changes` in `PLAN.md`: what changed and why.
+
+## Learn as you go
+
+When a task teaches something the next session should know, write one line where it will be
+used, in the same pull request: how to work in this project in **Project notes** below, a decision
+and its reason in `PLAN.md`, how to install, run or use the product in `README.md`. Update or
+replace an existing line rather than adding another.
 
 ## Branch → pull request → CI → merge
 
-Every change, including `PLAN.md` and `TASKS.md`, reaches `main` only by a merged pull request.
+`main` means the repository's default branch; if yours has another name, use that wherever
+these files say `main`.
 
-1. Update `main` (`git pull`) and create a branch named after the task.
-2. Make the change, with tests for new behaviour.
-3. Run the checks the repository names (README, CI workflow) and fix what fails. If it names none
-   yet, run the tests or the app yourself, and say plainly that no automated checks exist.
-4. Review the change with fresh eyes, using the repository's reviewer agent or skill if it has
-   one, or by reading the whole diff yourself if not. Look for wrong behaviour against the task,
-   crashes and unhandled errors, security problems (secrets, injection, missing permission
-   checks), data loss, missing tests, duplication. Judge each "Done when" as met or unmet. Fix
-   and review again, at most three rounds; if still not clean, stop and tell the developer what
-   is unmet.
-5. Tick the task in `TASKS.md` on this branch, so it is marked done when the pull request merges.
-   Commit with a plain message that says what changed.
-6. Push the branch and open a pull request that names the task, ticks each "Done when" with where
-   it is met, and lists anything to do on merge. If you can't push or open it (no remote, or no
-   GitHub CLI), give the developer the branch name and the pull request text, and say what is
-   missing.
-7. CI runs on the pull request. **The developer merges** once CI passes, or, with no CI yet, after
-   reading the check results you reported.
+- Every change, including `PLAN.md` and `TASKS.md`, reaches `main` only by a merged pull request.
+  The idea and the plan go on a branch named `plan`; each task goes on a branch named after it.
+- Before opening a pull request, run the checks the repository names (README, CI workflow). If
+  it names none yet, run the tests or the app yourself and say plainly that no automated checks
+  exist. Then review the change with fresh eyes (the `reviewer` agent in `.claude/agents/`), at
+  most three rounds.
+- The pull request names the task, ticks each "Done when" with where it is met, and lists
+  anything to do on merge. If you can't push or open it (no remote, or no GitHub CLI), give the
+  developer the branch name and the pull request text, and say what is missing.
+- **The developer merges** once CI passes, or, with no CI yet, after reading the check results
+  you reported.
 
 ## What "done" means
 
@@ -124,3 +128,7 @@ people. Everything else inside the current job, do and report.
   keep them out of git.
 - Commit or push to `main`, force push, or rewrite published history.
 - Claim something works without having run it, or hide a failing check.
+
+## Project notes
+
+One line each: conventions, commands and lessons for this project. None yet.

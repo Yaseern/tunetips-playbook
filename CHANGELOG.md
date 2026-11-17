@@ -11,3 +11,14 @@ All notable changes to this project are recorded here. Versions follow
 - `AGENTS.md` and `CLAUDE.md`: how the agent works, keeping sessions short and token use low, the
   idea → plan → build → done stages, what "done" means, and the branch → pull request → CI →
   merge workflow.
+- Skills `/new-idea`, `/plan-it` and `/work-on-it` in `.claude/skills/`, which run each stage
+  from `PLAN.md` and `TASKS.md`, and a `reviewer` agent in `.claude/agents/`.
+- Changing course: the idea or plan can change during planning or building through `/new-idea`
+  and `/plan-it`, recorded under `## Changes` in `PLAN.md`; built work that no longer fits is
+  changed or reverted by new tasks.
+- Learning as you go: lessons go into Project notes in `AGENTS.md`, `PLAN.md` or the README in
+  the same pull request.
+
+### Changed
+
+- `AGENTS.md` keeps only the rules; the step-by-step for each stage moved into the skills.
