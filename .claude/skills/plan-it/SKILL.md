@@ -11,8 +11,9 @@ The plan stage: decide what to build and with what. Follow `AGENTS.md`; these ar
    - Get onto the `plan` branch. Switch to `main` and run `git pull` (skip if there is no
      remote). If a `plan` branch exists, check whether its pull request was merged or closed
      (`gh pr list --head plan --state all`, or ask the developer). If it was, ask before
-     deleting the branch, then create a fresh `plan` from `main`. If it is still
-     open, continue on it. With no `plan` branch, create it from `main`.
+     deleting the branch, then create a fresh `plan` from `main`. If it is still open, or has no
+     pull request yet (an idea not yet planned), continue on it; never delete it. With no `plan`
+     branch, create it from `main`.
    - Read `PLAN.md` and `TASKS.md`, and pick the case:
      - **No `PLAN.md`**: the idea comes first. Suggest `/new-idea` and stop.
      - **No `TASKS.md` on `main`**: a first plan. Write or redraft it (steps 2 to 9).
@@ -41,8 +42,9 @@ The plan stage: decide what to build and with what. Follow `AGENTS.md`; these ar
    and numbered tasks with what each waits on, or for a change, only what changes and why. Don't
    write files before the yes.
 7. **Write it.** For a next version, first move `PLAN.md` and `TASKS.md` to `plans/v<N>/` (the
-   next free number) and start a new `PLAN.md` with the name, idea and stack. Set `Stage: plan`
-   and write, below the idea and verdict:
+   next free number) and start a new `PLAN.md` with the name, idea and stack. Set `Stage: plan`,
+   except for a plan change while `PLAN.md` says `Stage: build`, which keeps it. Write, below the
+   idea and verdict:
 
    ```
    ## Stack

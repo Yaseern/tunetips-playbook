@@ -12,6 +12,8 @@ The build stage, one task per session. Follow `AGENTS.md`; these are the steps.
    stage line in `PLAN.md`. Only what is on `main` is approved.
    - No `TASKS.md` on `main`: the plan is not approved yet. Say so (merge the plan pull request,
      or run `/plan-it` if there is none) and stop.
+   - `Stage: done` on `main`: the product is released. Say so, suggest `/plan-it` for a next
+     version, and stop.
    - If a plan change is waiting (an open pull request from the `plan` branch: `gh pr list --head
      plan`, or ask the developer when unsure), ask whether to wait for it or go on with the
      current plan.
@@ -20,7 +22,7 @@ The build stage, one task per session. Follow `AGENTS.md`; these are the steps.
    `Progress:` line. If no task is free, say which tasks are blocked and on what, and stop. If all
    are done, go to **Release** below. Tell the developer in one line which task you are taking.
 3. **Branch.** Create a branch from `main` named after the task (short, lowercase, hyphens). If
-   `main` says `Stage: plan`, a new or changed plan starts its build: set `Stage: build` in
+   `main` says `Stage: plan`, a new plan or a changed idea starts its build: set `Stage: build` in
    `PLAN.md` and tell the developer the build stage has started: one task per session, each
    ending in a pull request they merge.
 4. **Build** the task with tests for new behaviour, following `AGENTS.md` and the stack in

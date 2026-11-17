@@ -59,6 +59,14 @@ The steps for each stage are in `.claude/skills/<name>/SKILL.md`. Claude Code ru
 The first line of `PLAN.md` is the stage: `Stage: idea`, `plan`, `build` or `done`. No `PLAN.md`
 means the idea stage. Each skill says when it changes the line.
 
+Each task in `TASKS.md` looks like this:
+
+```
+- [ ] Task title
+  Done when: how to check it
+  Waits on: nothing (or the tasks it needs)
+```
+
 ## When things change
 
 The stages usually run in order, but what you learn while planning or building can change the
@@ -81,14 +89,6 @@ When a task teaches something the next session should know, write one line where
 used, in the same pull request: how to work in this project in **Project notes** below, a decision
 and its reason in `PLAN.md`, how to install, run or use the product in `README.md`. Update or
 replace an existing line rather than adding another.
-
-Each task in `TASKS.md` looks like this:
-
-```
-- [ ] Task title
-  Done when: how to check it
-  Waits on: nothing (or the tasks it needs)
-```
 
 ## Branch → pull request → CI → merge
 
