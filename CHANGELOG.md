@@ -26,11 +26,20 @@ All notable changes to this project are recorded here. Versions follow
   merging or publishing, and is blocked from force pushes, deleting remote branches, hard resets
   and recursive deletes; its file reader can't open the common `.env` files that hold secrets.
 - Example product in `examples/habit-streaks/`: a command-line habit tracker in Node.js with no
-  dependencies, its finished `PLAN.md` and `TASKS.md`, and tests that CI runs. The README says
-  how to remove it.
+  dependencies, its finished `PLAN.md` and `TASKS.md`, and tests that CI runs.
+- README step 4, "Make it yours": one pull request that removes the example, clears this
+  changelog for the product and sets the license holder.
 
 ### Changed
 
 - `AGENTS.md` keeps only the rules; the step-by-step for each stage moved into the skills.
 - The README is the entry point, renamed to Tunetips Kit: what to install, making your own copy,
   and the path to the first task, with links into the guide.
+- Gaps from a fresh-copy test run: the README sets the Git identity and says CI's checks need
+  no local tools. The guardrails allow branch switching, commits and pulls, and ask before
+  `gh pr create`. The skills now say:
+  - `/new-idea`: ask whether the developer can reach the users, and note any technology for later.
+  - `/plan-it`: merge `main` into an old `plan` branch, have the first task put its tests in CI,
+    and skip the review for the plan pull request.
+  - `/work-on-it`: report the checks in the pull request, wait for CI, keep global installs
+    off the developer's machine, and replace the kit's README with the product's once it runs.

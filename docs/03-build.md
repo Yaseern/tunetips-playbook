@@ -15,7 +15,8 @@ pull request, in one session.
 3. It creates a branch named after the task, builds it and adds tests for the new behaviour.
 4. It runs the checks and asks the `reviewer` agent for a fresh-eyes review of the change, up to
    three rounds, fixing what the review confirms.
-5. It ticks the task in `TASKS.md`, commits, pushes the branch and opens a pull request.
+5. It ticks the task in `TASKS.md`, commits, pushes the branch and opens a pull request that
+   lists the checks it ran. It waits for CI and tells you the result.
 6. **You read the pull request and merge it** once the checks pass: the green ticks on GitHub if
    your product has CI, otherwise the check results the agent reports in the pull request.
 7. Back to step 1 for the next task.

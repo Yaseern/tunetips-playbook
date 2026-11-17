@@ -20,7 +20,8 @@ approves the plan.** Nothing is built before that.
 3. **Draft.** It shows you the brief and the numbered tasks in one message. Say yes, or what to
    change. It writes no files before your yes.
 4. **Pull request.** It writes the files, pushes the `plan` branch and opens a pull request titled
-   `Plan: <name>`. Read it on GitHub, then merge it.
+   `Plan: <name>`. It has no review round; CI checks it and you review it by reading it on
+   GitHub. Then merge it.
 
 ## The plan format
 
@@ -64,7 +65,7 @@ where you are, and change it as you move on.
 # Tasks
 
 - [ ] Set up the project so it runs and has one passing test
-  Done when: the app starts locally and the test command passes
+  Done when: the app starts locally, the test command passes, and CI runs it
   Waits on: nothing
 - [ ] Add and tick off items on one list
   Done when: items added on one phone show on another after a refresh; a test covers adding
@@ -77,8 +78,10 @@ where you are, and change it as you move on.
 - **Usable on its own.** After the first task, the product runs. After each later one, it still
   runs and does a little more.
 - **A checkable "Done when".** "Login works" is vague. "A new user can sign up, log out and log
-  back in; tests cover each" can be checked.
+  back in; tests cover each" can be checked. It checks this task's work only, not features a
+  later task adds.
 - **Real blockers only.** "Waits on" lists a task only if this one can't start without it.
+  Separate several titles with `;`.
 - **3 to 10 tasks.** More than that means the first version is too big. Cut scope, not quality.
 
 ## Changing the plan later

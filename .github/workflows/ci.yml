@@ -51,7 +51,7 @@ jobs:
                           broken += 1
           sys.exit(1 if broken else 0)
 
-      # Example product: remove these two steps along with examples/ (see the README).
+      # Example product: remove these two steps along with examples/ (README step 4).
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -59,6 +59,9 @@ jobs:
         working-directory: examples/habit-streaks
         run: npm test
 
-      # Add your product's checks below once it has code, for example:
-      # - run: npm ci
+      # Add your product's checks below once it has code. For Node.js, for example:
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 22
+      # - run: npm ci     # needs a committed package-lock.json; skip it with no dependencies
       # - run: npm test

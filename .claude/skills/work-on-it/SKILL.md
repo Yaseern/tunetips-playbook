@@ -30,12 +30,16 @@ The build stage, one task per session. Follow `AGENTS.md`; these are the steps.
    the work shows the plan or the idea is wrong, finish or pause at a working point and tell the
    developer; they decide whether to change it (see "When things change" in `AGENTS.md`).
 5. **Review, at most three rounds.** Each round: run the checks (see `AGENTS.md`), then the
-   `reviewer` agent with the task's title and `Done when:`. A round is clean when the checks pass
-   and the verdict is `clean`; items marked after merge don't count against it. If not clean, fix
-   what it confirms and start the next round. After a third round that is not clean, don't fix
-   again: add a `Progress:` line under the task saying what is still unmet, commit, push the
-   branch, tell the developer, and stop without a pull request.
-6. **Learn and commit.** Update the docs the change affects (how to install, run or use it). If
+   `reviewer` agent with the task's title and `Done when:`. A check that changes the developer's
+   machine (a global install, a system service) runs in a temporary folder, or ask first. A
+   round is clean when the checks pass and the verdict is `clean`; items marked after merge
+   don't count against it. If not clean, fix what it confirms and start the next round. After a
+   third round that is not clean, don't fix again: add a `Progress:` line under the task saying
+   what is still unmet, commit, push the branch, tell the developer, and stop without a pull
+   request.
+6. **Learn and commit.** Update the docs the change affects (how to install, run or use it).
+   The first time the product can be run, replace the kit's README with a short one for the
+   product (how to install, run and test it, and a link to the kit's guide in `docs/`). If
    the task taught something the next session should know, write it down as in "Learn as you go"
    in `AGENTS.md`. Tick the task (`- [x]`) in `TASKS.md`, shrink it to its checklist line, and
    commit with a plain message that says what changed.
@@ -43,11 +47,14 @@ The build stage, one task per session. Follow `AGENTS.md`; these are the steps.
    - **Task:** the task title.
    - **Done when:** each item as a checklist entry, ticked when met, with where it is met (file,
      test or command).
+   - **Checks:** what you ran and the result, and any check left to CI.
    - **Review:** how many rounds, what was fixed, and the final verdict.
    - **Learned:** what was written down and where, or "Nothing new".
    - **On merge:** anything to do (settings, environment variables, migrations), or "Nothing".
-8. **Close** in three lines: what was built, the pull request link, and the next step: the
-   developer merges once CI passes, then runs `/work-on-it` in a fresh session.
+8. **Close.** Wait for CI (`gh pr checks <number> --watch`); if it fails, fix it on the branch as
+   another review round. Then say in three lines what was built, the pull request link with the
+   CI result, and the next step: the developer merges, then runs `/work-on-it` in a fresh
+   session.
 
 ## Release
 
@@ -55,6 +62,7 @@ When every task is done, check the product against "What done means" in `AGENTS.
 is missing, tell the developer and suggest `/plan-it` to add tasks for it. If nothing is missing,
 ask whether to release. On their yes, create a branch named `release` from `main` (if an old
 `release` branch exists, ask before deleting it), set `Stage: done` in `PLAN.md`, add a version
-entry to `CHANGELOG.md` (create it if needed), and open a pull request as in steps 5 to 7. After
+entry to the product's `CHANGELOG.md` (README step 4 cleared the kit's; create it if missing),
+and open a pull request as in steps 5 to 7. After
 they merge it, tagging and publishing the release are theirs to do or to ask you for. A next
 version starts with `/plan-it`.
