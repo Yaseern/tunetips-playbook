@@ -12,7 +12,7 @@ You work through four stages, and the agent walks you through each one:
 4. **[Ship](docs/04-ship.md)**: it works end to end, it's tested, and someone else can use it
    without your help.
 
-> Work in progress. Guardrail settings, CI and an example product are still being added. See
+> Work in progress. An example product is still being added. See
 > [CHANGELOG.md](CHANGELOG.md) for what each version contains.
 
 ## Getting started
@@ -50,6 +50,12 @@ One copy of the kit holds one product.
 Run `claude` in the repository folder. The agent reads `CLAUDE.md` and `AGENTS.md` on its own,
 so you don't need to explain the rules.
 
+`.claude/settings.json` sets the guardrails: Claude Code reads files freely, asks you before it
+pushes, merges or publishes, and is blocked from force pushes, deleting remote branches, hard
+resets and `rm -r`. Its file reader also can't open the common `.env` files that hold secrets
+(`.env.example` stays readable). Say yes to a push when the agent is pushing its own task branch. The rules
+match common command forms only, so still read what the agent asks to run.
+
 ### 4. Your first task
 
 1. **Idea.** Run `/new-idea` and describe what you want to build. Answer its questions; it scores
@@ -75,6 +81,8 @@ With another agent, ask it to follow `.claude/skills/new-idea/SKILL.md` (then `p
 | [`CLAUDE.md`](CLAUDE.md) | Points Claude Code at `AGENTS.md`, plus tips for Claude Code sessions. |
 | [`.claude/skills/`](.claude/skills/) | `/new-idea`, `/plan-it` and `/work-on-it`: the steps of each stage. |
 | [`.claude/agents/reviewer.md`](.claude/agents/reviewer.md) | A fresh-eyes reviewer the agent runs before each pull request. |
+| [`.claude/settings.json`](.claude/settings.json) | Guardrails: what Claude Code may do freely, must ask about, or may never do. |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI: checks every pull request. Add your product's tests to it. |
 | [`CHANGELOG.md`](CHANGELOG.md) | What changed in each version of the kit. |
 
 Your product adds two files as you go: `PLAN.md` (stage, idea, stack, brief) and `TASKS.md` (the

@@ -20,6 +20,11 @@ All notable changes to this project are recorded here. Versions follow
   the same pull request.
 - Guide for beginners in `docs/`, one page per stage: judging an idea, the plan format, the build
   loop, and a release checklist.
+- CI workflow in `.github/workflows/ci.yml`: on every pull request it checks that JSON files are
+  valid and that links between Markdown files resolve, with a place to add the product's tests.
+- Guardrail settings in `.claude/settings.json`: the agent may read freely, asks before pushing,
+  merging or publishing, and is blocked from force pushes, deleting remote branches, hard resets
+  and recursive deletes; its file reader can't open the common `.env` files that hold secrets.
 
 ### Changed
 
