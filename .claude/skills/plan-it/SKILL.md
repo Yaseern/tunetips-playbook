@@ -8,12 +8,15 @@ description: Agree on the technology, then turn the idea in PLAN.md into a short
 The plan stage: decide what to build first and with what. Follow `AGENTS.md`; these are the
 steps.
 
-1. **Check where things stand.** Read `PLAN.md`. On `main`, run `git pull` (skip if there is no
-   remote), then switch to the `plan` branch, creating it from `main` if it doesn't exist.
-   - No `PLAN.md`: the idea comes first. Suggest `/new-idea` and stop.
-   - `Stage: build` or `Stage: done`, and the developer wants a next version: move `PLAN.md` and
-     `TASKS.md` to `plans/v<N>/` (the next free number), then start a new `PLAN.md` that keeps the
-     product name, the idea and the stack. The new plan builds on the code that exists.
+1. **Check where things stand.**
+   - Get onto the `plan` branch. Switch to `main` and run `git pull` (skip if there is no
+     remote). If a `plan` branch exists and `main`'s `PLAN.md` says `Stage: build` or
+     `Stage: done`, it is either a next plan in progress or left over from an earlier one: ask
+     the developer whether to continue it or delete it and start fresh. Then switch to `plan`,
+     creating it from `main` if it doesn't exist.
+   - Read `PLAN.md`. If there is none, the idea comes first: suggest `/new-idea` and stop.
+   - If it says `Stage: build` or `Stage: done`, this is a next version. It keeps the product
+     name, the idea and the stack, and builds on the code that exists.
 2. **Open the stage.** Tell the developer: this is the plan stage, you will agree on the
    technology and the first tasks, they approve the plan by merging its pull request, and then
    building starts.
@@ -33,7 +36,9 @@ steps.
    - **Waits on**: only real blockers, not mere order.
 6. **Show the draft** (brief and numbered tasks, each with what it waits on) in one short message
    and wait for the developer's yes or changes. Don't write files before the yes.
-7. **Write it.** In `PLAN.md`, set `Stage: plan` and add, below the idea and verdict:
+7. **Write it.** For a next version, first move `PLAN.md` and `TASKS.md` to `plans/v<N>/` (the
+   next free number) and start a new `PLAN.md` with the name, idea and stack. In `PLAN.md`, set
+   `Stage: plan` and add, below the idea and verdict:
 
    ```
    ## Stack

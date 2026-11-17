@@ -53,7 +53,8 @@ The steps for each stage are in `.claude/skills/<name>/SKILL.md`. Claude Code ru
    `PLAN.md` and the tasks in `TASKS.md`. **The developer approves the plan by merging its pull
    request, and nothing is built before that.**
 3. **Build** (`/work-on-it`): one task per session, through the workflow below.
-4. **Done**: the product meets the definition of done below and has a release.
+4. **Done** (`/work-on-it`, once every task is done): the product meets the definition of done
+   below and has a release.
 
 The first line of `PLAN.md` is the stage: `Stage: idea`, `plan`, `build` or `done`. No `PLAN.md`
 means the idea stage. Each skill says when it changes the line.
@@ -67,6 +68,9 @@ Each task in `TASKS.md` looks like this:
 ```
 
 ## Branch → pull request → CI → merge
+
+`main` means the repository's default branch; if yours has another name, use that wherever
+these files say `main`.
 
 - Every change, including `PLAN.md` and `TASKS.md`, reaches `main` only by a merged pull request.
   The idea and the plan go on a branch named `plan`; each task goes on a branch named after it.

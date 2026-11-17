@@ -8,10 +8,11 @@ description: Judge a product idea and record it in PLAN.md with a go, park or dr
 The idea stage: decide whether the idea is worth building. Follow `AGENTS.md`; these are the
 steps.
 
-1. **Check where things stand.** If `PLAN.md` exists with `Stage: build` or `Stage: done`, this
-   repository already holds a product: tell the developer a new product belongs in a new copy of
-   the kit, and stop. If it exists with `Stage: idea` or `Stage: plan`, show its idea in two lines
-   and ask whether to replace it.
+1. **Check where things stand.** If `PLAN.md` is already on `main`, this repository holds an
+   approved product: tell the developer a new product belongs in a new copy of the kit (and a
+   next version starts with `/plan-it`), and stop. Otherwise get onto the `plan` branch as in
+   `/plan-it` step 1. If it has a `PLAN.md`, show its idea in two lines and ask whether to
+   replace it.
 2. **Open the stage.** Tell the developer: this is the idea stage, you will ask a few questions and
    score the idea, they decide whether to go on, and the next stage is the plan.
 3. **Ask what is unclear**: the problem, who has it, how they deal with it today, and what the
@@ -27,8 +28,7 @@ steps.
 
    10 or more: **go**. 7 to 9: **park** (revisit later). Below 7: **drop**. The verdict is advice;
    the developer decides. Do no research beyond what you know unless they ask.
-5. **Record it.** Update `main` (`git pull`, skip if there is no remote) and switch to the `plan`
-   branch, creating it from `main` if it doesn't exist. Write `PLAN.md`:
+5. **Record it** on the `plan` branch. Write `PLAN.md`:
 
    ```
    Stage: idea
