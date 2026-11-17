@@ -8,5 +8,6 @@ All notable changes to this project are recorded here. Versions follow
 
 ### Added
 
-- `AGENTS.md` and `CLAUDE.md`: how the agent works, the idea → plan → build → done stages, what
-  "done" means, and the branch → pull request → CI → merge workflow.
+- `AGENTS.md` and `CLAUDE.md`: how the agent works, keeping sessions short and token use low, the
+  idea → plan → build → done stages, what "done" means, and the branch → pull request → CI →
+  merge workflow.

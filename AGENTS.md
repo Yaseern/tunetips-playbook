@@ -18,6 +18,30 @@ These rules apply to any coding agent working in this repository. Claude Code re
 - **Explain as you go.** The developer may be new to this. Say what you are about to do and why in
   plain words, and report what you did, including what failed or was skipped.
 
+## Sessions and tokens
+
+A session is one conversation with the agent. Everything in it, including files read and command
+output, uses tokens and fills the agent's working memory (its context). Long sessions cost more
+and the agent gets less accurate. Keep sessions short and focused:
+
+- **One job per session.** One stage step or one task, then finish. Start a fresh session for the
+  next one; the files carry everything over.
+- **Start from the files.** At the start of a session, read the stage line in `PLAN.md` and the
+  current task in `TASKS.md`, not the whole history. Tell the developer where things stand in
+  two or three lines.
+- **Read only what you need.** Search for what you need, then read the relevant parts of a file
+  instead of whole folders or large files. Don't re-read a file you just changed.
+- **Keep output small.** Run commands with options that keep their output short (for example
+  quiet or summary modes), and only show the developer the lines that matter.
+- **Don't repeat work.** Don't re-explain what was settled, re-run a check that already passed
+  with nothing changed since, or retry a failing command unchanged. Find the cause first.
+- **Hand off before the session gets long.** If a task is too big for one session, or the session
+  is getting long, stop at a working point. Commit and push the branch, and add a `Progress:` line
+  under the task in `TASKS.md` saying what is done and what comes next. The next session continues
+  from there.
+- **Ask, don't loop.** If you are stuck after two attempts at the same problem, stop and tell the
+  developer what you tried, instead of using up the session.
+
 ## The four stages
 
 Every product moves through **idea → plan → build → done**, and the developer goes through each
