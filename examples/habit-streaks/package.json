@@ -1,0 +1,17 @@
+{
+  "name": "habit-streaks",
+  "version": "1.0.0",
+  "description": "Track daily habits and their streaks from the command line.",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "streaks": "streaks.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT"
+}

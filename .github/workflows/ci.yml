@@ -51,6 +51,14 @@ jobs:
                           broken += 1
           sys.exit(1 if broken else 0)
 
+      # Example product: remove these two steps along with examples/ (see the README).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Example product tests
+        working-directory: examples/habit-streaks
+        run: npm test
+
       # Add your product's checks below once it has code, for example:
       # - run: npm ci
       # - run: npm test
