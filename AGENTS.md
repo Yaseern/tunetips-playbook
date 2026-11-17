@@ -20,16 +20,29 @@ These rules apply to any coding agent working in this repository. Claude Code re
 
 ## The four stages
 
-Every product moves through **idea → plan → build → done**. The first line of `PLAN.md` says
-which stage it is in, as `Stage: idea`, `Stage: plan`, `Stage: build` or `Stage: done`; update it
-when the stage changes. If there is no `PLAN.md` yet, the product is at the idea stage: create
-`PLAN.md` when the developer describes their idea, and `TASKS.md` when the plan is written.
+Every product moves through **idea → plan → build → done**, and the developer goes through each
+stage with you. At the start of each stage, tell them which stage they are in, what it is for,
+what you will do, what they need to decide, and what comes next. At the end, say what was
+produced and how to move on.
+
+The first line of `PLAN.md` says which stage the product is in: `Stage: idea`, `Stage: plan`,
+`Stage: build` or `Stage: done`. If there is no `PLAN.md` yet, the product is at the idea stage.
+The stage line changes like this:
+
+- `Stage: idea` when you create `PLAN.md` for the idea, on the `plan` branch.
+- `Stage: plan` when you write the plan and `TASKS.md`, on the same branch. Its pull request is
+  the plan the developer approves.
+- `Stage: build` on the first build task's branch.
+- `Stage: done` on the branch that makes the release.
 
 In `TASKS.md`, each task is a checklist item (`- [ ]` open, `- [x]` done) with its title,
 followed by `Done when:` and `Waits on:` lines (`Waits on: nothing` if it can start at once).
 
-1. **Idea**: decide whether it is worth building. Score it from 1 to 3 on each of these, with one
-   line of reasoning per score, and record the scores and verdict in `PLAN.md`:
+1. **Idea**: decide whether it is worth building. First ask the developer the questions you need
+   to understand the idea: what problem it solves, who has that problem, how they deal with it
+   today, and what the first version must do. Ask only what is unclear, a few questions at a
+   time, and don't guess the answers. Then score it from 1 to 3 on each of these, with one line
+   of reasoning per score, and record the scores and verdict in `PLAN.md`:
    - **Need**: 3 = people need it every day, 2 = every week, 1 = now and then.
    - **Users**: 3 = many people clearly have this problem today, 2 = a clear but small group,
      1 = unclear who would use it.
@@ -39,8 +52,14 @@ followed by `Done when:` and `Waits on:` lines (`Waits on: nothing` if it can st
 
    10 or more: **go**. 7 to 9: **park** (keep it, revisit later). Below 7: **drop**. The verdict
    is advice; the developer decides.
-2. **Plan**: write the brief in `PLAN.md` (the problem, who it is for, what is out of scope, and
-   how we will know it worked), then 3 to 10 tasks in `TASKS.md`, each a day or less, in order.
+2. **Plan**: before writing the plan, settle the technology. Ask what the developer already
+   knows and where the product must run (web, phone, desktop, command line). Then recommend one
+   stack that fits the idea best: well known, free to start, simple to host, and suited to the
+   developer's experience. Give one line of reasoning for each choice and name one alternative.
+   Ask any remaining questions about scope. The developer chooses; record the stack and the
+   reasons in `PLAN.md`. Then write the brief in `PLAN.md` (the problem, who it is for, what is
+   out of scope, and how we will know it worked), and 3 to 10 tasks in `TASKS.md`, each a day or
+   less, in order.
    Each task says how to check it is done ("Done when …") and which tasks it waits on. The first
    task should produce something usable on its own. **The developer approves the plan before any
    building starts.**
