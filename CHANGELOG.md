@@ -13,6 +13,11 @@ All notable changes to this project are recorded here. Versions follow
   merge workflow.
 - Skills `/new-idea`, `/plan-it` and `/work-on-it` in `.claude/skills/`, which run each stage
   from `PLAN.md` and `TASKS.md`, and a `reviewer` agent in `.claude/agents/`.
+- Changing course: the idea or plan can change during planning or building through `/new-idea`
+  and `/plan-it`, recorded under `## Changes` in `PLAN.md`; built work that no longer fits is
+  changed or reverted by new tasks.
+- Learning as you go: lessons go into Project notes in `AGENTS.md`, `PLAN.md` or the README in
+  the same pull request.
 
 ### Changed
 

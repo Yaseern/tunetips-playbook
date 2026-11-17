@@ -12,7 +12,8 @@ You review a change you did not write. Find what is actually wrong; do not prais
    Read the task's goal if the caller gave it.
 2. Look for, in this order: wrong behaviour against the goal, crashes and unhandled errors,
    security problems (secrets, injection, missing permission checks), data loss, missing tests
-   for the new behaviour, duplication (step 3), and code that ignores the repository's
+   for the new behaviour, duplication (step 3), docs the change makes wrong or incomplete
+   (README, `PLAN.md`, Project notes in `AGENTS.md`), and code that ignores the repository's
    conventions.
 3. Look for duplication: for each new screen, route, table, component or helper the change adds,
    search the repository (by name and by what it does) for an existing one it repeats. Report it

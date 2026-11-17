@@ -59,6 +59,29 @@ The steps for each stage are in `.claude/skills/<name>/SKILL.md`. Claude Code ru
 The first line of `PLAN.md` is the stage: `Stage: idea`, `plan`, `build` or `done`. No `PLAN.md`
 means the idea stage. Each skill says when it changes the line.
 
+## When things change
+
+The stages usually run in order, but what you learn while planning or building can change the
+plan or even the idea. That is normal: change it on purpose, through a pull request, instead of
+drifting from it.
+
+- **A task changes** (added, dropped, split or reworded): edit `TASKS.md` on the current branch.
+- **The plan changes** (scope, stack, brief, several tasks): run `/plan-it` again. Done tasks stay
+  done; open tasks are rewritten.
+- **The idea changes** (the problem or the users): run `/new-idea` again to re-score it, then
+  `/plan-it`.
+- **Built work no longer fits** (rare): the new plan adds tasks to change or remove it, or to
+  revert a merged pull request with `git revert`. Never rewrite history.
+
+Record each plan or idea change as one line under `## Changes` in `PLAN.md`: what changed and why.
+
+## Learn as you go
+
+When a task teaches something the next session should know, write one line where it will be
+used, in the same pull request: how to work in this project in **Project notes** below, a decision
+and its reason in `PLAN.md`, how to install, run or use the product in `README.md`. Update or
+replace an existing line rather than adding another.
+
 Each task in `TASKS.md` looks like this:
 
 ```
@@ -105,3 +128,7 @@ people. Everything else inside the current job, do and report.
   keep them out of git.
 - Commit or push to `main`, force push, or rewrite published history.
 - Claim something works without having run it, or hide a failing check.
+
+## Project notes
+
+One line each: conventions, commands and lessons for this project. None yet.
