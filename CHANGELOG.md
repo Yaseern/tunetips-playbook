@@ -18,6 +18,8 @@ All notable changes to this project are recorded here. Versions follow
   changed or reverted by new tasks.
 - Learning as you go: lessons go into Project notes in `AGENTS.md`, `PLAN.md` or the README in
   the same pull request.
+- CI workflow in `.github/workflows/ci.yml`: on every pull request it checks that JSON files are
+  valid and that links between Markdown files resolve, with a place to add the product's tests.
 
 ### Changed
 
