@@ -25,6 +25,9 @@ All notable changes to this project are recorded here. Versions follow
 - Guardrail settings in `.claude/settings.json`: the agent may read freely, asks before pushing,
   merging or publishing, and is blocked from force pushes, deleting remote branches, hard resets
   and recursive deletes; its file reader can't open the common `.env` files that hold secrets.
+- Example product in `examples/habit-streaks/`: a command-line habit tracker in Node.js with no
+  dependencies, its finished `PLAN.md` and `TASKS.md`, and tests that CI runs. The README says
+  how to remove it.
 
 ### Changed
 

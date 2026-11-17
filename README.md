@@ -12,8 +12,7 @@ You work through four stages, and the agent walks you through each one:
 4. **[Ship](docs/04-ship.md)**: it works end to end, it's tested, and someone else can use it
    without your help.
 
-> Work in progress. An example product is still being added. See
-> [CHANGELOG.md](CHANGELOG.md) for what each version contains.
+> Work in progress. See [CHANGELOG.md](CHANGELOG.md) for what each version contains.
 
 ## Getting started
 
@@ -72,6 +71,27 @@ match common command forms only, so still read what the agent asks to run.
 With another agent, ask it to follow `.claude/skills/new-idea/SKILL.md` (then `plan-it`,
 `work-on-it`) instead of the slash commands.
 
+## The example product
+
+[`examples/habit-streaks/`](examples/habit-streaks/) is a tiny finished product built with the
+kit: a command-line habit tracker in Node.js with tests. Its `PLAN.md` and `TASKS.md` show what
+your own will look like by the end, and CI runs its tests.
+
+### Removing the example
+
+Remove it before your first `/new-idea`, so your copy holds only your product. On a branch, as for
+any change:
+
+1. Delete the folder: `git rm -r examples`.
+2. In `.github/workflows/ci.yml`, delete the two steps under the comment `# Example product`
+   (`actions/setup-node` and `Example product tests`), and the comment itself.
+3. In this README, delete the section `## The example product` (with this one inside it) and the
+   `examples/` row in **What's inside**.
+4. Commit, push and open a pull request. CI should pass; merge it.
+
+`CHANGELOG.md` is the kit's history, so leave its line about the example as it is. Nothing else in
+the repository refers to `examples/`.
+
 ## What's inside
 
 | File | What it is |
@@ -83,6 +103,7 @@ With another agent, ask it to follow `.claude/skills/new-idea/SKILL.md` (then `p
 | [`.claude/agents/reviewer.md`](.claude/agents/reviewer.md) | A fresh-eyes reviewer the agent runs before each pull request. |
 | [`.claude/settings.json`](.claude/settings.json) | Guardrails: what Claude Code may do freely, must ask about, or may never do. |
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI: checks every pull request. Add your product's tests to it. |
+| [`examples/`](examples/) | The example product. Remove it before you start yours (see above). |
 | [`CHANGELOG.md`](CHANGELOG.md) | What changed in each version of the kit. |
 
 Your product adds two files as you go: `PLAN.md` (stage, idea, stack, brief) and `TASKS.md` (the
