@@ -14,23 +14,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # tsconfig/jsconfig and .vscode files allow comments, so they are not plain JSON.
       - name: JSON files are valid
         run: |
           status=0
           while IFS= read -r f; do
             jq empty "$f" || { echo "::error file=$f::invalid JSON"; status=1; }
-          done < <(git ls-files '*.json')
+          done < <(git ls-files '*.json' | grep -Ev '(^|/)(ts|js)config[^/]*\.json$|^\.vscode/')
           exit $status
 
       - name: Links between Markdown files resolve
-        shell: python
+        shell: python3 {0}
         run: |
           import re, subprocess, sys
           from pathlib import Path
 
-          link = re.compile(r"\]\(([^)\s]+)")
+          link = re.compile(r"\]\((<[^>]+>|[^)\s]+)")
           broken = 0
-          files = subprocess.run(["git", "ls-files", "*.md"], capture_output=True, text=True, check=True).stdout.split()
+          files = subprocess.run(["git", "ls-files", "*.md"], capture_output=True, text=True, check=True).stdout.splitlines()
           for name in files:
               path = Path(name)
               in_code = False
@@ -43,8 +44,9 @@ jobs:
                   for target in link.findall(line):
                       if re.match(r"^[a-z][a-z0-9+.-]*:", target, re.I) or target.startswith("#"):
                           continue
-                      target = target.split("#")[0]
-                      if not (path.parent / target).exists():
+                      target = target.strip("<>").split("#")[0].replace("%20", " ")
+                      base = Path(".") if target.startswith("/") else path.parent
+                      if not (base / target.lstrip("/")).exists():
                           print(f"::error file={name},line={number}::broken link: {target}")
                           broken += 1
           sys.exit(1 if broken else 0)

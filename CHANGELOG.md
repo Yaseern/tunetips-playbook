@@ -23,8 +23,8 @@ All notable changes to this project are recorded here. Versions follow
 - CI workflow in `.github/workflows/ci.yml`: on every pull request it checks that JSON files are
   valid and that links between Markdown files resolve, with a place to add the product's tests.
 - Guardrail settings in `.claude/settings.json`: the agent may read freely, asks before pushing,
-  merging or publishing, and is blocked from force pushes, hard resets, recursive deletes and
-  reading `.env` files.
+  merging or publishing, and is blocked from force pushes, deleting remote branches, hard resets
+  and recursive deletes; its file reader can't open the common `.env` files that hold secrets.
 
 ### Changed
 
