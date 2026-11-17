@@ -1,0 +1,23 @@
+# Dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+.next/
+.cache/
+__pycache__/
+*.pyc
+.venv/
+*.log
+
+# Secrets and local settings (commit .env.example, never real .env files)
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
