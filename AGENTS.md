@@ -20,9 +20,8 @@ These rules apply to any coding agent working in this repository. Claude Code re
 
 ## Sessions and tokens
 
-A session is one conversation with the agent. Everything in it, including files read and command
-output, uses tokens and fills the agent's working memory (its context). Long sessions cost more
-and the agent gets less accurate. Keep sessions short and focused:
+Everything in a session (instructions, files read, command output) uses tokens and fills the
+agent's context. Long sessions cost more and make the agent less accurate. Keep them short:
 
 - **One job per session.** One stage step or one task, then finish. Start a fresh session for the
   next one; the files carry everything over.
@@ -41,6 +40,10 @@ and the agent gets less accurate. Keep sessions short and focused:
   from there.
 - **Ask, don't loop.** If you are stuck after two attempts at the same problem, stop and tell the
   developer what you tried, instead of using up the session.
+- **Keep the always-read files small.** `AGENTS.md` and `CLAUDE.md` load into every session, and
+  `PLAN.md` and `TASKS.md` are read in most. Write them as short lines, not prose. Don't repeat
+  one file in another; point to it. Keep `PLAN.md` under about a page. In `TASKS.md`, shrink each
+  done task to its one checklist line; git history keeps the details.
 
 ## The four stages
 
