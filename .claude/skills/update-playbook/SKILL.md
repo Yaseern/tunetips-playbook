@@ -17,7 +17,8 @@ URL). Its releases are tags named `v<version>`.
    developer. Otherwise switch to `main` and run `git pull` (skip if there is no remote).
 2. **Find the versions.** This copy's version is the line in `.claude/playbook-version`; no such
    file means `0.1.0`. List the releases with `git ls-remote --tags --refs <playbook URL> "v*"`
-   and take the highest version. If that fails, say so (no network, or no access to the
+   and take the highest version, comparing the numbers (0.10.0 is above 0.9.0) and ignoring tags
+   that aren't plain `v<major>.<minor>.<patch>`. If that fails, say so (no network, or no access to the
    playbook) and stop. If the copy is already on the highest version, say it is up to date and
    stop. Tell the developer in one line: "Updating the playbook from <old> to <new>."
 3. **Fetch both releases** into `refs/playbook/`, not into tags, so they never mix with the
@@ -30,22 +31,28 @@ URL). Its releases are tags named `v<version>`.
 4. **Branch** from `main`: `git switch -c update-playbook-<new>`. If that branch already exists,
    ask the developer whether to continue on it or start over.
 5. **Apply the playbook's changes** between the two releases, merging them with this copy's own
-   edits:
+   edits. `git rev-parse --git-path playbook-update.patch` gives a path inside git's own folder
+   for the patch (below: `<patch>`). Write it with `--output`, not a `>` redirect, which
+   PowerShell would re-encode:
 
    ```
-   git diff --binary refs/playbook/v<old> refs/playbook/v<new> -- .claude CLAUDE.md AGENTS.md docs ":(exclude).claude/playbook-version" > .git/playbook-update.patch
-   git apply --3way .git/playbook-update.patch
+   git diff --binary --output=<patch> refs/playbook/v<old> refs/playbook/v<new> -- .claude CLAUDE.md AGENTS.md docs ":(exclude).claude/playbook-version"
+   git apply --3way <patch>
    ```
 
-   An empty patch is fine: only the version marker changes. If `git apply` reports conflicts,
+   If `git diff --quiet` with the same versions and paths exits 0, there is nothing to apply:
+   skip `git apply`, and only the version marker changes. `git apply --3way` stages what it
+   changes. If it reports conflicts,
    open each conflicted file, keep the developer's own changes and the playbook's new ones, and
    remove the conflict markers. If a conflict is unclear (the developer rewrote or deleted a
-   file the playbook changed), show both sides and ask which to keep.
+   file the playbook changed), show both sides and ask which to keep. In `AGENTS.md`, a conflict
+   at or below `## Project notes` always keeps the copy's side.
 6. **Protect the product's files.** In `AGENTS.md`, everything from the `## Project notes`
    heading down must stay exactly as on `main`: check `git diff main -- AGENTS.md`, and if any
    change is at or below that heading, put those lines back as they are on `main`. Then set
-   `.claude/playbook-version` to `<new>` (create it if missing) and stage everything with
-   `git add -A .claude CLAUDE.md AGENTS.md docs`.
+   `.claude/playbook-version` to `<new>` (create it if missing) and stage the rest with
+   `git add -u .claude CLAUDE.md AGENTS.md docs` and `git add .claude/playbook-version`, so the
+   developer's untracked files stay out.
    `git diff --cached --name-only main` must list only files under `.claude/` or `docs/`, plus
    `CLAUDE.md` and `AGENTS.md`. If anything else is there, unstage and restore it.
 7. **Note what was left out.** `git diff --stat refs/playbook/v<old> refs/playbook/v<new> --
