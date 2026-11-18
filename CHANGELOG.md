@@ -6,6 +6,10 @@ All notable changes to this project are recorded here. Versions follow
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-18
+
+The first release: a template to take an idea to a shipped product with an AI agent.
+
 ### Added
 
 - `AGENTS.md` and `CLAUDE.md`: how the agent works, keeping sessions short and token use low, the
@@ -33,7 +37,7 @@ All notable changes to this project are recorded here. Versions follow
 ### Changed
 
 - `AGENTS.md` keeps only the rules; the step-by-step for each stage moved into the skills.
-- The README is the entry point, renamed to Tunetips Kit: what to install, making your own copy,
+- The README is the entry point, renamed to Tunetips Playbook: what to install, making your own copy,
   and the path to the first task, with links into the guide.
 - Gaps from a fresh-copy test run: the README sets the Git identity and says CI's checks need
   no local tools. The guardrails allow branch switching, commits and pulls, and ask before
@@ -46,3 +50,6 @@ All notable changes to this project are recorded here. Versions follow
 - What the agent may do on its own, asks about and may never do moved from the README to
   `docs/03-build.md`, so it stays once the product's README replaces the kit's. Skills and
   `AGENTS.md` refer to "Make it yours" by name, since the step removes itself.
+
+[Unreleased]: https://github.com/Yaseern/tunetips-playbook/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Yaseern/tunetips-playbook/releases/tag/v0.1.0
