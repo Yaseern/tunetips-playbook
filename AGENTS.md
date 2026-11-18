@@ -24,8 +24,9 @@ agent's context. Long sessions cost more and make the agent less accurate.
 - **One job per session.** One stage step or one task, then finish. If you notice other work, add
   it to `TASKS.md` instead of doing it now. Start a fresh session for the next job.
 - **The files are the memory.** Don't rely on earlier conversations. Start each session by
-  reading the stage line in `PLAN.md` and the current task in `TASKS.md` (when they exist),
-  then tell the developer where things stand in two or three lines.
+  reading the stage line in `PLAN.md` and the current task in `TASKS.md` (when they exist; an
+  idea not yet planned is only on the `plan` branch), then tell the developer where things stand
+  in two or three lines.
 - **Read and print only what you need.** Search first, then read the relevant part of a file. Don't
   re-read a file you just changed. Use quiet or summary options on commands and show only the
   lines that matter.
@@ -97,7 +98,7 @@ these files say `main`.
 
 - Every change, including `PLAN.md` and `TASKS.md`, reaches `main` only by a merged pull request.
   The idea and the plan go on a branch named `plan`; each task goes on a branch named after it.
-  One-off setup, such as README step 4, goes on a branch named after the step.
+  One-off setup, such as the README's "Make it yours", goes on a branch named after the step.
 - Before opening a task's pull request, run the checks the repository names (README, CI
   workflow). If it names none yet, run the tests or the app yourself and say plainly that no
   automated checks exist. A check that needs a tool the computer lacks (CI's JSON and link

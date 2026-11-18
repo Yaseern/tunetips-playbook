@@ -43,3 +43,6 @@ All notable changes to this project are recorded here. Versions follow
     and skip the review for the plan pull request.
   - `/work-on-it`: report the checks in the pull request, wait for CI, keep global installs
     off the developer's machine, and replace the kit's README with the product's once it runs.
+- What the agent may do on its own, asks about and may never do moved from the README to
+  `docs/03-build.md`, so it stays once the product's README replaces the kit's. Skills and
+  `AGENTS.md` refer to "Make it yours" by name, since the step removes itself.

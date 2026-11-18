@@ -23,6 +23,22 @@ pull request, in one session.
 
 The first task also moves the stage in `PLAN.md` from `plan` to `build`.
 
+## What the agent asks you
+
+`.claude/settings.json` sets the guardrails:
+
+- **On its own:** reading files, switching branches, staging, committing, pulling and merging
+  `main` into a branch. These local steps can be undone; `AGENTS.md` keeps its commits off
+  `main`, and `.gitignore` keeps `.env` files out of a normal `git add`.
+- **Asks you first:** pushing, opening a pull request, merging and publishing, plus any other
+  command, such as running tests or installing packages. Read each one and say yes when it fits
+  the task, for example a push or a pull request from the agent's own task branch.
+- **Never:** force pushes, deleting remote branches, hard resets and `rm -r` (`git rm -r`, which
+  git can undo, is allowed after a yes). Its file reader also can't open the common `.env` files
+  that hold secrets (`.env.example` stays readable).
+
+The rules match common command forms only, so still read what the agent asks to run.
+
 ## Reading a pull request
 
 You don't need to understand every line. Check that:
