@@ -1,4 +1,4 @@
-# Tunetips Kit
+# Tunetips Playbook
 
 A starter kit for building a real product with an AI coding agent, from your first idea to a
 release that people use.
