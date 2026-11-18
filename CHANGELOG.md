@@ -15,6 +15,9 @@ All notable changes to this project are recorded here. Versions follow
   edits, never touching `PLAN.md`, `TASKS.md`, Project notes, the README, CI or product code.
   `.claude/playbook-version` records the copy's version (none means 0.1.0). The README says how a
   v0.1.0 copy gets the skill.
+- "Deploy" in `docs/04-ship.md`: a free option and short steps for each kind of product (static
+  site, web app with a server, command-line tool or package, mobile). The release checklist
+  has the release pull request say where users get the product.
 
 ### Changed
 
