@@ -15,6 +15,8 @@ All notable changes to this project are recorded here. Versions follow
   edits, never touching `PLAN.md`, `TASKS.md`, Project notes, the README, CI or product code.
   `.claude/playbook-version` records the copy's version (none means 0.1.0). The README says how a
   v0.1.0 copy gets the skill.
+- CI scans every commit for secrets with the free gitleaks CLI (no account needed) and names the
+  file, line and commit of each one it finds. `docs/03-build.md` says what to do when it does.
 
 ### Changed
 

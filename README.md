@@ -36,8 +36,8 @@ git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 ```
 
-CI runs the repository's own checks on GitHub, so you don't need their tools (`jq`, Python)
-on your computer.
+CI runs the repository's own checks on GitHub, so you don't need their tools (`jq`, Python,
+gitleaks) on your computer.
 
 ### 2. Make your own copy
 
