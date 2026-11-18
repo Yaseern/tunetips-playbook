@@ -18,6 +18,8 @@ All notable changes to this project are recorded here. Versions follow
 - "Deploy" in `docs/04-ship.md`: a free option and short steps for each kind of product (static
   site, web app with a server, command-line tool or package, mobile). `/work-on-it` asks where
   users get the product before a release and names it in the release pull request.
+- CI scans every commit for secrets with the free gitleaks CLI (no account needed) and names the
+  file, line and commit of each one it finds. `docs/03-build.md` says what to do when it does.
 
 ### Changed
 

@@ -98,7 +98,7 @@ Go through this before you say yes to a release. The agent does the parts marked
       they got stuck and fix it first.
 - [ ] Bad input gives a clear message, not a crash or a blank screen.
 - [ ] No secrets in the repository: API keys, passwords and tokens live in environment variables,
-      and `.env` files are in `.gitignore`.
+      and `.env` files are in `.gitignore`. CI's secret scan passes on `main`.
 - [ ] The README says what the product is, who it is for, how to install or open it, and how to
       run the tests.
 - [ ] If it stores user data: you know where it is kept, how it is backed up, and how a user can
