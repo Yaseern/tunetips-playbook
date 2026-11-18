@@ -13,6 +13,7 @@
       "Bash(git switch *)",
       "Bash(git fetch)",
       "Bash(git fetch *)",
+      "Bash(git ls-remote *)",
       "Bash(git pull)",
       "Bash(git pull *)",
       "Bash(git add *)",
