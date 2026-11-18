@@ -6,6 +6,11 @@ All notable changes to this project are recorded here. Versions follow
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-18
+
+Ready for beginners' own copies: one name, no pushes to `main`, a way to take later releases,
+deploy steps and secret scanning.
+
 ### Added
 
 - Guardrails refuse pushes to `main` and `master` (`git push origin main`, `HEAD:main`,
@@ -71,5 +76,6 @@ The first release: a template to take an idea to a shipped product with an AI ag
   `docs/03-build.md`, so it stays once the product's README replaces the playbook's. Skills and
   `AGENTS.md` refer to "Make it yours" by name, since the step removes itself.
 
-[Unreleased]: https://github.com/Yaseern/tunetips-playbook/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Yaseern/tunetips-playbook/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Yaseern/tunetips-playbook/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Yaseern/tunetips-playbook/releases/tag/v0.1.0
