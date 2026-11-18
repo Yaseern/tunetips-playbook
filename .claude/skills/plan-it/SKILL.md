@@ -38,7 +38,8 @@ The plan stage: decide what to build and with what. Follow `AGENTS.md`; these ar
    - **Tasks**: 3 to 10 open tasks, each a day or less, in order. The first produces something
      usable on its own; if there is no code yet, it sets the project up so it runs and has one
      passing test, and adds the test command to `.github/workflows/ci.yml`. Each task has a
-     checkable `Done when:` about its own work, not about features later tasks add. When a task
+     checkable `Done when:` about its own work, not about features later tasks add (check each
+     one against the tasks before it: can it be met with only those?). When a task
      overlaps existing code, say whether it reuses, changes or removes it, and name it. If built
      work no longer fits the plan, add tasks to change or remove it, or to revert its pull
      request.

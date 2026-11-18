@@ -59,22 +59,16 @@ One copy of the kit holds one product.
 Run `claude` in the repository folder. The agent reads `CLAUDE.md` and `AGENTS.md` on its own,
 so you don't need to explain the rules.
 
-`.claude/settings.json` sets the guardrails: Claude Code reads files freely and may switch
-branches, stage, commit, pull and merge `main` into a branch on its own. These local steps can
-be undone; `AGENTS.md` keeps its commits off `main`, and `.gitignore` keeps `.env` files out of
-a normal `git add`. It asks you before it pushes, opens a pull request, merges
-or publishes, and is blocked from force pushes, deleting remote branches, hard resets and
-`rm -r` (`git rm -r`, which git can undo, is allowed after a yes). Its file reader also can't
-open the common `.env` files that hold secrets (`.env.example` stays readable). Other commands,
-such as running tests or installing packages, ask too: read each one and say yes when it fits
-the task. Say yes to a push or a pull request when the agent is working on its own task branch.
-The rules match common command forms only, so still read what the agent asks to run.
+`.claude/settings.json` sets the guardrails: what the agent does on its own, what it asks you
+about, and what it may never do. Read
+[What the agent asks you](docs/03-build.md#what-the-agent-asks-you) before you start, so you
+know when to say yes.
 
 ### 4. Make it yours
 
 Your copy still holds the kit's example product, the kit's changelog and the kit's name in the
 license. Clear them out in one pull request before your first idea, so the copy holds only your
-product. You can ask your agent: "Do README step 4, Make it yours". Asking approves the deletions,
+product. You can ask your agent: "Do the Make it yours step in the README". Asking approves the deletions,
 and it still asks before pushing. By hand:
 
 1. Create the branch: `git switch -c make-it-yours`.
@@ -86,7 +80,8 @@ and it still asks before pushing. By hand:
    **What's inside**.
 5. In `CHANGELOG.md`, keep the title, the intro and `## [Unreleased]`, and delete everything
    below it. From now on it records your product's versions.
-6. In `LICENSE`, replace `Tunetips` with your name, or choose another license.
+6. In `LICENSE`, replace `Tunetips` with your name, or choose another license. An agent doing
+   this step asks which name to use.
 7. Commit with the message `Make the kit copy my own`, push (`git push -u origin make-it-yours`)
    and open a pull request:
    `gh pr create --fill`. No task goes with it. CI should pass; then merge it.

@@ -79,7 +79,7 @@ where you are, and change it as you move on.
   runs and does a little more.
 - **A checkable "Done when".** "Login works" is vague. "A new user can sign up, log out and log
   back in; tests cover each" can be checked. It checks this task's work only, not features a
-  later task adds.
+  later task adds: a setup task's help text lists the commands that exist, not "all commands".
 - **Real blockers only.** "Waits on" lists a task only if this one can't start without it.
   Separate several titles with `;`.
 - **3 to 10 tasks.** More than that means the first version is too big. Cut scope, not quality.

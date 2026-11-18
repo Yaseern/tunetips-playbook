@@ -62,7 +62,7 @@ When every task is done, check the product against "What done means" in `AGENTS.
 is missing, tell the developer and suggest `/plan-it` to add tasks for it. If nothing is missing,
 ask whether to release. On their yes, create a branch named `release` from `main` (if an old
 `release` branch exists, ask before deleting it), set `Stage: done` in `PLAN.md`, add a version
-entry to the product's `CHANGELOG.md` (README step 4 cleared the kit's; create it if missing),
-and open a pull request as in steps 5 to 7. After
-they merge it, tagging and publishing the release are theirs to do or to ask you for. A next
-version starts with `/plan-it`.
+entry to the product's `CHANGELOG.md` (the README's "Make it yours" cleared the kit's; create it
+if missing), and open a pull request as in steps 5 to 7. After they merge it, tagging and
+publishing the release are theirs to do or to ask you for. A next version starts with
+`/plan-it`.
