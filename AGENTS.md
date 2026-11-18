@@ -101,8 +101,8 @@ these files say `main`.
   One-off setup, such as the README's "Make it yours", goes on a branch named after the step.
 - Before opening a task's pull request, run the checks the repository names (README, CI
   workflow). If it names none yet, run the tests or the app yourself and say plainly that no
-  automated checks exist. A check that needs a tool the computer lacks (CI's JSON and link
-  checks use `jq` and Python) is left to CI; say so. Then review the change with fresh eyes (the
+  automated checks exist. A check that needs a tool the computer lacks (CI's checks use `jq`,
+  Python and gitleaks) is left to CI; say so. Then review the change with fresh eyes (the
   `reviewer` agent in `.claude/agents/`), at most three rounds. The plan pull request skips the
   review (see `/plan-it`).
 - The pull request names the task, ticks each "Done when" with where it is met, and lists

@@ -77,6 +77,12 @@ makes the agent less accurate. The files are the memory instead: `PLAN.md` says 
   the task.
 - **The task turns out wrong.** Stop at a working point and change the plan (see
   [2. Plan](02-plan.md#changing-the-plan-later)).
+- **CI says "possible secret".** Its secret scan (gitleaks) names the file, line and commit.
+  If it is a real key, password or token, treat it as leaked even on a private repository: revoke
+  it and make a new one with the service that issued it, keep the new one in an environment
+  variable, and remove the old one from the code. The old commit still holds it, so then add the
+  fingerprint from the CI message as a line in `.gitleaksignore`. If it is not a secret (test
+  data, an example value), add the fingerprint the same way. Never rewrite history to hide it.
 - **You merged something that doesn't fit.** Add a task that changes or reverts it. Never rewrite
   history on `main`.
 
