@@ -51,6 +51,7 @@ The build stage, one task per session. Follow `AGENTS.md`; these are the steps.
    - **Review:** how many rounds, what was fixed, and the final verdict.
    - **Learned:** what was written down and where, or "Nothing new".
    - **On merge:** anything to do (settings, environment variables, migrations), or "Nothing".
+   - **Where users get it:** release pull request only (see **Release** below).
 8. **Close.** Wait for CI (`gh pr checks <number> --watch`); if it fails, fix it on the branch as
    another review round. Then say in three lines what was built, the pull request link with the
    CI result, and the next step: the developer merges, then runs `/work-on-it` in a fresh
@@ -60,9 +61,11 @@ The build stage, one task per session. Follow `AGENTS.md`; these are the steps.
 
 When every task is done, check the product against "What done means" in `AGENTS.md`. If something
 is missing, tell the developer and suggest `/plan-it` to add tasks for it. If nothing is missing,
-ask whether to release. On their yes, create a branch named `release` from `main` (if an old
-`release` branch exists, ask before deleting it), set `Stage: done` in `PLAN.md`, add a version
-entry to the product's `CHANGELOG.md` (the README's "Make it yours" cleared the playbook's;
-create it if missing), and open a pull request as in steps 5 to 7. After they merge it, tagging and
-publishing the release are theirs to do or to ask you for. A next version starts with
-`/plan-it`.
+ask whether to release, and where users will get the product: a web address, an install command
+or a download link (if they don't know, go through "Deploy" in `docs/04-ship.md` with them). On
+their yes, create a branch named `release` from `main` (if an old `release` branch exists, ask
+before deleting it), set `Stage: done` in `PLAN.md`, add a version entry to the product's
+`CHANGELOG.md` (the README's "Make it yours" cleared the playbook's; create it if missing), and
+open a pull request as in steps 5 to 7, with a **Where users get it:** line in its body. After
+they merge it, tagging and publishing the release are theirs to do or to ask you for. A next
+version starts with `/plan-it`.

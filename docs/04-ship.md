@@ -57,16 +57,20 @@ device that isn't yours if you can, and do the main job once.
    and Vercel's free plan is for non-commercial use only.
 3. Free hosts usually wipe the disk on every deploy or restart, so a SQLite file or uploaded
    files there get lost. Keep data in a hosted database with a free plan (for example Neon for
-   PostgreSQL, Turso for SQLite) and put its connection string in an environment variable.
+   PostgreSQL, Turso for SQLite) and put its connection string in an environment variable. Some
+   free databases expire after a few weeks; check before you rely on one.
 4. Add the environment variables in the host's settings, deploy, and open the address it gives.
 
 **Command-line tool or package**
 
 1. Pick a name that isn't taken (search npmjs.com or pypi.org) and set it and the version in
-   `package.json` or `pyproject.toml`.
+   `package.json` or `pyproject.toml`. For a command people run, the agent also sets the command
+   (`bin` in `package.json`, `[project.scripts]` in `pyproject.toml`).
 2. Create a free account on the registry and turn on two-factor sign-in.
-3. Publish: `npm publish` for Node.js; for Python, `python -m build` then `python -m twine upload
-   dist/*`. The agent asks before publishing, since a published version can't be replaced.
+3. Publish: `npm publish` for Node.js (`npm publish --access public` for a name like
+   `@you/name`); for Python, `pip install build twine`, then `python -m build` and `python -m
+   twine upload dist/*`. The agent asks before publishing, since a published version can't be
+   replaced.
 4. Users run `npx <name>` or `npm install -g <name>`, or `pip install <name>`. For a single
    program file instead, attach it to the GitHub release from the checklist below.
 
@@ -76,7 +80,8 @@ device that isn't yours if you can, and do the main job once.
    and allow installing from that source. Or build a web app people can add to their home
    screen, deployed as above.
 2. The app stores are not free: Google Play has a one-time registration fee and the Apple App
-   Store a yearly one, and each reviews your app first. Decide on that before you plan for it.
+   Store a yearly one (check the current amounts), and each reviews your app first. Decide
+   whether you want a store before you plan the app, since it changes the work.
 3. A full mobile guide (builds, store listings, reviews) is planned for a later playbook
    version; `/update-playbook` brings it in when it is out.
 
