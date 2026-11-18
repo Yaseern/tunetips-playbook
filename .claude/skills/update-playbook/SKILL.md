@@ -19,8 +19,8 @@ URL). Its releases are tags named `v<version>`.
    file means `0.1.0`. List the releases with `git ls-remote --tags --refs <playbook URL> "v*"`
    and take the highest version, comparing the numbers (0.10.0 is above 0.9.0) and ignoring
    tags that aren't plain `v<major>.<minor>.<patch>`. If that fails, say so (no network, or no
-   access to the playbook) and stop. If the copy is already on the highest version, say it is up to date and
-   stop. Tell the developer in one line: "Updating the playbook from <old> to <new>."
+   access to the playbook) and stop. If the copy is already on the highest version, say it is up
+   to date and stop. Tell the developer in one line: "Updating the playbook from <old> to <new>."
 3. **Fetch both releases** into `refs/playbook/`, not into tags, so they never mix with the
    product's own tags:
 
@@ -50,7 +50,7 @@ URL). Its releases are tags named `v<version>`.
    If `git apply` fails with an error instead (for example "does not exist in index" for a file
    the developer deleted), it applied nothing. Tell the developer which file, ask whether to
    leave it out, and on a yes write the patch again with `":(exclude)<path>"` added to the paths
-   and apply that.
+   and apply that. Repeat for each file that fails.
 6. **Protect the product's files.** In `AGENTS.md`, everything from the `## Project notes`
    heading down must stay exactly as on `main`: check `git diff main -- AGENTS.md`, and if any
    change is at or below that heading, put those lines back as they are on `main`. Then set
