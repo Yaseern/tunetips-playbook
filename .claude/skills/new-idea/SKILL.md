@@ -15,7 +15,7 @@ steps.
      it or change it.
    - `PLAN.md` on `main`: this repository already holds a product. Ask whether this is a change
      to it (the problem or the users changed) or a different product. A different product
-     belongs in a new copy of the kit: say so and stop. For a change, show the current idea and
+     belongs in a new copy of the playbook: say so and stop. For a change, show the current idea and
      verdict in a few lines and ask what changed and why.
 2. **Open the stage.** Tell the developer: this is the idea stage (or an idea change), you will
    ask a few questions and score the idea, they decide whether to go on, and the plan comes next.

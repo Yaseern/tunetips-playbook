@@ -38,8 +38,8 @@ The build stage, one task per session. Follow `AGENTS.md`; these are the steps.
    what is still unmet, commit, push the branch, tell the developer, and stop without a pull
    request.
 6. **Learn and commit.** Update the docs the change affects (how to install, run or use it).
-   The first time the product can be run, replace the kit's README with a short one for the
-   product (how to install, run and test it, and a link to the kit's guide in `docs/`). If
+   The first time the product can be run, replace the playbook's README with a short one for
+   the product (how to install, run and test it, and a link to the playbook's guide in `docs/`). If
    the task taught something the next session should know, write it down as in "Learn as you go"
    in `AGENTS.md`. Tick the task (`- [x]`) in `TASKS.md`, shrink it to its checklist line, and
    commit with a plain message that says what changed.
@@ -62,7 +62,7 @@ When every task is done, check the product against "What done means" in `AGENTS.
 is missing, tell the developer and suggest `/plan-it` to add tasks for it. If nothing is missing,
 ask whether to release. On their yes, create a branch named `release` from `main` (if an old
 `release` branch exists, ask before deleting it), set `Stage: done` in `PLAN.md`, add a version
-entry to the product's `CHANGELOG.md` (the README's "Make it yours" cleared the kit's; create it
-if missing), and open a pull request as in steps 5 to 7. After they merge it, tagging and
+entry to the product's `CHANGELOG.md` (the README's "Make it yours" cleared the playbook's;
+create it if missing), and open a pull request as in steps 5 to 7. After they merge it, tagging and
 publishing the release are theirs to do or to ask you for. A next version starts with
 `/plan-it`.

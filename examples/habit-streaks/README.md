@@ -3,9 +3,9 @@
 Track daily habits from the terminal and see how many days in a row you've kept each one up. No
 account, no app, no internet: your habits live in one file on your computer.
 
-This is the kit's example product. It went through every stage of the kit: the idea and verdict
-are in [PLAN.md](PLAN.md), the tasks in [TASKS.md](TASKS.md). Read those two files to see what a
-finished plan looks like.
+This is the playbook's example product. It went through every stage of the playbook: the idea and
+verdict are in [PLAN.md](PLAN.md), the tasks in [TASKS.md](TASKS.md). Read those two files to see
+what a finished plan looks like.
 
 ## Install
 
