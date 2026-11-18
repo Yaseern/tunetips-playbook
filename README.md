@@ -108,6 +108,21 @@ Nothing else in the repository refers to `examples/`.
 With another agent, ask it to follow `.claude/skills/new-idea/SKILL.md` (then `plan-it`,
 `work-on-it`) instead of the slash commands.
 
+## Updating your copy
+
+When a new playbook version is out, run `/update-playbook` in a fresh session. It opens one pull
+request with the new skills, guardrails, rules and guide, and leaves your plan, tasks and code
+alone. See [Updating the playbook](docs/03-build.md#updating-the-playbook).
+
+A copy made from v0.1.0 doesn't have `/update-playbook` yet. Fetch the playbook once, then ask
+your agent to follow the skill from it:
+
+```
+git fetch --no-tags https://github.com/Yaseern/tunetips-playbook.git main
+```
+
+"Follow the steps in `git show FETCH_HEAD:.claude/skills/update-playbook/SKILL.md`."
+
 ## The example product
 
 [`examples/habit-streaks/`](examples/habit-streaks/) is a tiny finished product built with the
@@ -122,7 +137,8 @@ your own will look like by the end, and CI runs its tests. Remove it in
 | [`docs/`](docs/) | The guide: one page per stage. |
 | [`AGENTS.md`](AGENTS.md) | The rules every coding agent follows here: stages, workflow, what "done" means. |
 | [`CLAUDE.md`](CLAUDE.md) | Points Claude Code at `AGENTS.md`, plus tips for Claude Code sessions. |
-| [`.claude/skills/`](.claude/skills/) | `/new-idea`, `/plan-it` and `/work-on-it`: the steps of each stage. |
+| [`.claude/skills/`](.claude/skills/) | `/new-idea`, `/plan-it` and `/work-on-it`: the steps of each stage; `/update-playbook` takes a new playbook version. |
+| [`.claude/playbook-version`](.claude/playbook-version) | The playbook version this copy is on. |
 | [`.claude/agents/reviewer.md`](.claude/agents/reviewer.md) | A fresh-eyes reviewer the agent runs before each pull request. |
 | [`.claude/settings.json`](.claude/settings.json) | Guardrails: what Claude Code may do freely, must ask about, or may never do. |
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI: checks every pull request. Add your product's tests to it. |

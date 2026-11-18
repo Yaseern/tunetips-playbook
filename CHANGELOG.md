@@ -10,6 +10,11 @@ All notable changes to this project are recorded here. Versions follow
 
 - Guardrails refuse pushes to `main` and `master` (`git push origin main`, `HEAD:main`,
   `refs/heads/main`), and the README suggests a GitHub ruleset for public copies.
+- `/update-playbook` brings a newer playbook release into a copy in one pull request: changes to
+  `.claude/`, `CLAUDE.md`, the rules in `AGENTS.md` and `docs/`, merged with the copy's own
+  edits, never touching `PLAN.md`, `TASKS.md`, Project notes, the README, CI or product code.
+  `.claude/playbook-version` records the copy's version (none means 0.1.0). The README says how a
+  v0.1.0 copy gets the skill.
 
 ### Changed
 

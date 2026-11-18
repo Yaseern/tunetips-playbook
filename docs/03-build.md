@@ -80,6 +80,17 @@ makes the agent less accurate. The files are the memory instead: `PLAN.md` says 
 - **You merged something that doesn't fit.** Add a task that changes or reverts it. Never rewrite
   history on `main`.
 
+## Updating the playbook
+
+The playbook gets new versions (see its
+[changelog](https://github.com/Yaseern/tunetips-playbook/blob/main/CHANGELOG.md)). To take one,
+start a fresh session on a clean `main` and run `/update-playbook`. It brings the playbook's
+changes to `.claude/`, `CLAUDE.md`, the rules in `AGENTS.md` and `docs/` into one pull request,
+keeping your own edits to them, and asks you when the two clash. It never touches `PLAN.md`,
+`TASKS.md`, Project notes, your README, CI or product code; CI changes it lists for you to copy.
+`.claude/playbook-version` records which version your copy is on. Read the pull request and merge
+it like any other.
+
 ## Next
 
 When every task in `TASKS.md` is ticked, read [4. Ship](04-ship.md).
