@@ -6,6 +6,11 @@ All notable changes to this project are recorded here. Versions follow
 
 ## [Unreleased]
 
+### Changed
+
+- One name throughout: the README, guide, skills, example and repository description call it
+  Tunetips Playbook, or "the playbook".
+
 ## [0.1.0] - 2026-11-18
 
 The first release: a template to take an idea to a shipped product with an AI agent.
@@ -46,9 +51,9 @@ The first release: a template to take an idea to a shipped product with an AI ag
   - `/plan-it`: merge `main` into an old `plan` branch, have the first task put its tests in CI,
     and skip the review for the plan pull request.
   - `/work-on-it`: report the checks in the pull request, wait for CI, keep global installs
-    off the developer's machine, and replace the kit's README with the product's once it runs.
+    off the developer's machine, and replace the playbook's README with the product's once it runs.
 - What the agent may do on its own, asks about and may never do moved from the README to
-  `docs/03-build.md`, so it stays once the product's README replaces the kit's. Skills and
+  `docs/03-build.md`, so it stays once the product's README replaces the playbook's. Skills and
   `AGENTS.md` refer to "Make it yours" by name, since the step removes itself.
 
 [Unreleased]: https://github.com/Yaseern/tunetips-playbook/compare/v0.1.0...HEAD

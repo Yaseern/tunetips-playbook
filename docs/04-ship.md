@@ -44,8 +44,8 @@ Go through this before you say yes to a release. The agent does the parts marked
 - [ ] A `release` branch from `main`.
 - [ ] `Stage: done` in `PLAN.md`.
 - [ ] A version entry in `CHANGELOG.md`: the version number, the date and what's in it. If the
-      file still holds the kit's own history, ask the agent to replace it with your product's. Check
-      the number in the pull request: `0.1.0` for a first release, then see
+      file still holds the playbook's own history, ask the agent to replace it with your
+      product's. Check the number in the pull request: `0.1.0` for a first release, then see
       [Semantic Versioning](https://semver.org/).
 - [ ] A pull request with the same review as any task.
 

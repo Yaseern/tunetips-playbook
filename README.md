@@ -1,6 +1,6 @@
 # Tunetips Playbook
 
-A starter kit for building a real product with an AI coding agent, from your first idea to a
+A playbook for building a real product with an AI coding agent, from your first idea to a
 release that people use.
 
 You work through four stages, and the agent walks you through each one:
@@ -22,7 +22,7 @@ You work through four stages, and the agent walks you through each one:
   account.
 - **[GitHub CLI](https://cli.github.com/)**, then sign in with `gh auth login`. The agent uses it
   to open pull requests. Without it, the agent gives you the pull request text to paste on GitHub.
-- **A coding agent.** The kit is made for
+- **A coding agent.** The playbook is made for
   **[Claude Code](https://docs.claude.com/en/docs/claude-code/setup)**, where each stage is a
   slash command. Other agents read `AGENTS.md` and can follow the same steps from
   `.claude/skills/`.
@@ -41,7 +41,7 @@ on your computer.
 
 ### 2. Make your own copy
 
-One copy of the kit holds one product.
+One copy of the playbook holds one product.
 
 1. On this repository's GitHub page, click **Use this template** → **Create a new repository**.
    Name it after your product (you can rename it later) and make it private if you like. A
@@ -66,10 +66,10 @@ know when to say yes.
 
 ### 4. Make it yours
 
-Your copy still holds the kit's example product, the kit's changelog and the kit's name in the
-license. Clear them out in one pull request before your first idea, so the copy holds only your
-product. You can ask your agent: "Do the Make it yours step in the README". Asking approves the deletions,
-and it still asks before pushing. By hand:
+Your copy still holds the playbook's example product, the playbook's changelog and the
+Tunetips name in the license. Clear them out in one pull request before your first idea, so the
+copy holds only your product. You can ask your agent: "Do the Make it yours step in the README".
+Asking approves the deletions, and it still asks before pushing. By hand:
 
 1. Create the branch: `git switch -c make-it-yours`.
 2. Delete the example: `git rm -r examples`.
@@ -82,9 +82,9 @@ and it still asks before pushing. By hand:
    below it. From now on it records your product's versions.
 6. In `LICENSE`, replace `Tunetips` with your name, or choose another license. An agent doing
    this step asks which name to use.
-7. Commit with the message `Make the kit copy my own`, push (`git push -u origin make-it-yours`)
-   and open a pull request:
-   `gh pr create --fill`. No task goes with it. CI should pass; then merge it.
+7. Commit with the message `Make the playbook copy my own`, push
+   (`git push -u origin make-it-yours`) and open a pull request: `gh pr create --fill`. No task
+   goes with it. CI should pass; then merge it.
 8. Back on your computer, return to the updated `main`: `git switch main`, then `git pull`.
 
 Nothing else in the repository refers to `examples/`.
@@ -108,7 +108,7 @@ With another agent, ask it to follow `.claude/skills/new-idea/SKILL.md` (then `p
 ## The example product
 
 [`examples/habit-streaks/`](examples/habit-streaks/) is a tiny finished product built with the
-kit: a command-line habit tracker in Node.js with tests. Its `PLAN.md` and `TASKS.md` show what
+playbook: a command-line habit tracker in Node.js with tests. Its `PLAN.md` and `TASKS.md` show what
 your own will look like by the end, and CI runs its tests. Remove it in
 [step 4, Make it yours](#4-make-it-yours).
 
