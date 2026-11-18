@@ -87,6 +87,9 @@ Asking approves the deletions, and it still asks before pushing. By hand:
    goes with it. CI should pass; then merge it.
 8. Back on your computer, return to the updated `main`: `git switch main`, then `git pull`.
 
+If your copy is public, also add a branch ruleset on GitHub (Settings → Rules → Rulesets) that
+requires a pull request to change the default branch; private repositories need a paid plan for it.
+
 Nothing else in the repository refers to `examples/`.
 
 ### 5. Your first task

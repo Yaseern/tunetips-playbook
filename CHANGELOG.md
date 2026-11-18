@@ -6,6 +6,11 @@ All notable changes to this project are recorded here. Versions follow
 
 ## [Unreleased]
 
+### Added
+
+- Guardrails refuse pushes to `main` and `master` (`git push origin main`, `HEAD:main`,
+  `refs/heads/main`), and the README suggests a GitHub ruleset for public copies.
+
 ### Changed
 
 - One name throughout: the README, guide, skills, example and repository description call it

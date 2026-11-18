@@ -33,11 +33,15 @@ The first task also moves the stage in `PLAN.md` from `plan` to `build`.
 - **Asks you first:** pushing, opening a pull request, merging and publishing, plus any other
   command, such as running tests or installing packages. Read each one and say yes when it fits
   the task, for example a push or a pull request from the agent's own task branch.
-- **Never:** force pushes, deleting remote branches, hard resets and `rm -r` (`git rm -r`, which
-  git can undo, is allowed after a yes). Its file reader also can't open the common `.env` files
-  that hold secrets (`.env.example` stays readable).
+- **Never:** pushes to `main` or `master` (such as `git push origin main` or
+  `git push origin HEAD:main`), force pushes, deleting remote branches, hard resets and `rm -r`
+  (`git rm -r`, which git can undo, is allowed after a yes). Its file reader also can't open the
+  common `.env` files that hold secrets (`.env.example` stays readable).
 
-The rules match common command forms only, so still read what the agent asks to run.
+The rules match common command forms only, so still read what the agent asks to run. A bare
+`git push` or `git push origin HEAD` while on `main` names no branch, so it still only asks:
+say no unless the agent is on its own task branch. A ruleset on GitHub (README, "Make it yours")
+blocks those too.
 
 ## Reading a pull request
 
